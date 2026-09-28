@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <linearGradient id="vkuGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0284c7"/>
+      <stop offset="100%" stop-color="#0369a1"/>
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-opacity="0.25"/>
+    </filter>
+  </defs>
+  <rect width="512" height="512" rx="115" fill="url(#vkuGrad)"/>
+  <!-- Clipboard Body -->
+  <g filter="url(#shadow)">
+    <rect x="136" y="120" width="240" height="300" rx="24" fill="#ffffff"/>
+    <rect x="196" y="90" width="120" height="48" rx="12" fill="#e0f2fe" stroke="#0284c7" stroke-width="6"/>
+    <!-- Checklist items -->
+    <path d="M176 195 L200 219 L250 169" fill="none" stroke="#0284c7" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="268" y1="195" x2="336" y2="195" stroke="#94a3b8" stroke-width="8" stroke-linecap="round"/>
+    
+    <path d="M176 270 L200 294 L250 244" fill="none" stroke="#0284c7" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="268" y1="270" x2="336" y2="270" stroke="#94a3b8" stroke-width="8" stroke-linecap="round"/>
+
+    <path d="M176 345 L200 369 L250 319" fill="none" stroke="#0284c7" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="268" y1="345" x2="336" y2="345" stroke="#94a3b8" stroke-width="8" stroke-linecap="round"/>
+  </g>
+  <!-- Signal / Offline Badge -->
+  <circle cx="390" cy="120" r="36" fill="#10b981" stroke="#ffffff" stroke-width="8"/>
+  <path d="M378 120 L386 128 L404 110" fill="none" stroke="#ffffff" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

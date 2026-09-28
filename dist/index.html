@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+    <title>VKU Field Survey — Khảo Sát Thực Địa Cơ Sở Vật Chất</title>
+    
+    <!-- PWA & SEO Meta Tags -->
+    <meta name="description" content="Ứng dụng PWA kiểm tra cơ sở vật chất ngoại tuyến tại khuôn viên Đại học CNTT & TT Việt - Hàn (VKU)" />
+    <meta name="theme-color" content="#0284c7" />
+    <link rel="manifest" href="/manifest.json" />
+    
+    <!-- iOS Meta Tags -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="VKU Survey" />
+    <link rel="apple-touch-icon" href="/icons/icon-192.png" />
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/icons/icon.svg" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/icons/icon-192.png" />
+
+    <!-- Google Fonts: Inter & Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+    <script type="module" crossorigin src="/assets/index-0tL6bN2e.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-Nipni0P9.css">
+  </head>
+  <body class="theme-light">
+    <div id="app">
+      <!-- App Shell Top Bar -->
+      <header id="app-header" class="app-header">
+        <div class="header-container">
+          <div class="brand-group">
+            <div class="logo-wrapper">
+              <svg class="vku-logo" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect width="40" height="40" rx="10" fill="#0284c7"/>
+                <path d="M12 28L19 12H21L28 28H24L20 18.5L16 28H12Z" fill="white"/>
+                <circle cx="28" cy="12" r="3.5" fill="#38bdf8"/>
+              </svg>
+            </div>
+            <div class="brand-text">
+              <h1 class="brand-title">VKU Field Survey</h1>
+              <span class="brand-subtitle">Khảo sát cơ sở vật chất ngoại tuyến</span>
+            </div>
+          </div>
+
+          <div class="header-actions">
+            <!-- Network status badge -->
+            <div id="network-pill" class="network-pill online" title="Trạng thái kết nối">
+              <span class="network-dot"></span>
+              <span id="network-text" class="network-label">TRỰC TUYẾN</span>
+            </div>
+
+            <!-- Install PWA Button (shown if installable) -->
+            <button id="btn-install-pwa" class="btn-icon hidden" title="Cài đặt ứng dụng PWA">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                <polyline points="7 10 12 15 17 10"/>
+                <line x1="12" y1="15" x2="12" y2="3"/>
+              </svg>
+              <span class="install-text">Cài đặt</span>
+            </button>
+
+            <!-- Sync Button with Counter -->
+            <button id="btn-header-sync" class="btn-sync" title="Kích hoạt đồng bộ hóa">
+              <svg id="sync-icon" class="sync-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/>
+              </svg>
+              <span class="sync-badge-count" id="header-queue-count">0</span>
+            </button>
+
+            <!-- Theme Toggle Button -->
+            <button id="btn-theme-toggle" class="btn-icon" title="Đổi giao diện Sáng / Tối">
+              <svg id="theme-icon-sun" class="hidden" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="5"/>
+                <line x1="12" y1="1" x2="12" y2="3"/>
+                <line x1="12" y1="21" x2="12" y2="23"/>
+                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+                <line x1="1" y1="12" x2="3" y2="12"/>
+                <line x1="21" y1="12" x2="23" y2="12"/>
+                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+              </svg>
+              <svg id="theme-icon-moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Offline notification banner -->
+        <div id="offline-banner" class="offline-banner hidden">
+          <div class="banner-content">
+            <svg class="banner-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="1" y1="1" x2="23" y2="23"/>
+              <path d="M16.72 11.06A10.94 10.94 0 0 1 19 12.55"/>
+              <path d="M5 12.55a10.94 10.94 0 0 1 5.17-2.39"/>
+              <path d="M10.71 5.05A16 16 0 0 1 22.58 9"/>
+              <path d="M1.42 9a15.91 15.91 0 0 1 4.7-2.88"/>
+              <path d="M8.53 16.11a6 6 0 0 1 6.95 0"/>
+              <line x1="12" y1="20" x2="12.01" y2="20"/>
+            </svg>
+            <span id="banner-message">Đang ở chế độ Ngoại tuyến (Tầng hầm/Mất sóng) — Dữ liệu được bảo toàn trong IndexedDB và tự động đồng bộ khi có mạng.</span>
+          </div>
+        </div>
+      </header>
+
+      <!-- App Bottom / Main Navigation Tabs -->
+      <nav class="app-navigation">
+        <button id="nav-btn-form" class="nav-item active" data-tab="form">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+            <polyline points="14 2 14 8 20 8"/>
+            <line x1="12" y1="18" x2="12" y2="12"/>
+            <line x1="9" y1="15" x2="15" y2="15"/>
+          </svg>
+          <span>Khảo sát</span>
+        </button>
+
+        <button id="nav-btn-queue" class="nav-item" data-tab="queue">
+          <div class="nav-icon-wrapper">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+            </svg>
+            <span id="nav-queue-badge" class="badge-mini hidden">0</span>
+          </div>
+          <span>Hàng đợi (<span id="nav-queue-count">0</span>)</span>
+        </button>
+
+        <button id="nav-btn-stats" class="nav-item" data-tab="stats">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="20" x2="18" y2="10"/>
+            <line x1="12" y1="20" x2="12" y2="4"/>
+            <line x1="6" y1="20" x2="6" y2="14"/>
+          </svg>
+          <span>Thống kê</span>
+        </button>
+
+        <button id="nav-btn-settings" class="nav-item" data-tab="settings">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="2" width="20" height="8" rx="2" ry="2"/>
+            <rect x="2" y="14" width="20" height="8" rx="2" ry="2"/>
+            <line x1="6" y1="6" x2="6.01" y2="6"/>
+            <line x1="6" y1="18" x2="6.01" y2="18"/>
+          </svg>
+          <span>Mô phỏng & Dev</span>
+        </button>
+      </nav>
+
+      <!-- Main Content Container -->
+      <main id="main-content" class="main-content">
+        <!-- Section 1: Inspection Multi-step Form -->
+        <section id="tab-form" class="tab-view active"></section>
+
+        <!-- Section 2: Queue & History List -->
+        <section id="tab-queue" class="tab-view hidden"></section>
+
+        <!-- Section 3: Statistics Dashboard -->
+        <section id="tab-stats" class="tab-view hidden"></section>
+
+        <!-- Section 4: Mock Server & Dev Tools -->
+        <section id="tab-settings" class="tab-view hidden"></section>
+      </main>
+
+      <!-- Toast notifications container -->
+      <div id="toast-container" class="toast-container" aria-live="polite"></div>
+
+      <!-- Detail Modal / Full Image Viewer -->
+      <div id="global-modal" class="modal-backdrop hidden">
+        <div class="modal-card">
+          <div class="modal-header">
+            <h3 id="modal-title" class="modal-title">Chi tiết khảo sát</h3>
+            <button id="modal-close-btn" class="btn-close" aria-label="Đóng">&times;</button>
+          </div>
+          <div id="modal-body" class="modal-body"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Script entry point -->
+  </body>
+</html>
